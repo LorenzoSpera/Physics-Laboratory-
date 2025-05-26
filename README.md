@@ -8,7 +8,7 @@ This repository contains resources and documentation for a physics experiment ai
 
 Muons are elementary particles similar to electrons but with greater mass. They are produced in the upper atmosphere by cosmic rays and decay into electrons and neutrinos. Measuring the lifetime of muons allows physicists to study weak interactions and relativistic effects.
 
-![Muon Decay](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Muon_decay.svg/600px-Muon_decay.svg.png)
+![Muon Decay](/Users/lorenzospera/Desktop/Muon_Life_Time/fit_buono_1500bins.pdf)
 *Image: Muon decay process (μ⁻ → e⁻ + ν̅ₑ + ν_μ)*
 
 - Typical lifetime: ~2.2 microseconds at rest
@@ -20,7 +20,7 @@ Muons are elementary particles similar to electrons but with greater mass. They 
 
 Scintillators are materials that emit light (photons) when they are excited by ionizing radiation, such as when a muon passes through them. These materials are essential in detecting the passage of muons in our setup.
 
-![Scintillator Material](https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/PlasticScintillator.jpg/600px-PlasticScintillator.jpg)
+![Scintillator Material](/Users/lorenzospera/Desktop/Muon_Life_Time/fit_buono_1500bins.pdf)
 *Image: Example of a plastic scintillator slab*
 
 - Common materials: plastic or inorganic crystals (e.g., NaI(Tl))
@@ -33,7 +33,7 @@ Scintillators are materials that emit light (photons) when they are excited by i
 
 SiPMs are highly sensitive light detectors used to detect the small flashes of light produced by scintillators. They are compact, solid-state devices with excellent timing resolution.
 
-![SiPM](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/SiPM.jpg/600px-SiPM.jpg)
+![SiPM](/Users/lorenzospera/Desktop/Muon_Life_Time/fit_buono_1500bins.pdf)
 *Image: Silicon Photomultiplier device*
 
 - Operate in Geiger mode to detect single photons
