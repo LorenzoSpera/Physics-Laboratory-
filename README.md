@@ -62,6 +62,9 @@ The experimental setup uses plastic scintillators, photomultiplier tubes (PMTs),
 - Extracted lifetime:
 **  τμ = 2113 ± 58 (stat) ± 26 (syst) ns** 
 
+![Exponential fit](images/fit_esponenziale_1500bins.png)
+*Exponential fit of data to calculate the muon lifetime. * 
+
 ---
 
 ## Conclusion
@@ -84,8 +87,8 @@ The experimental setup uses plastic scintillators, photomultiplier tubes (PMTs),
 
 Scintillators are materials that emit light (photons) when they are excited by ionizing radiation, such as when a muon passes through them. These materials are essential in detecting the passage of muons in our setup.
 
-![Scintillator Material](images/fit_esponenziale_1500bins.png)
-*Image: Example of a plastic scintillator slab*
+
+
 
 - Common materials: plastic or inorganic crystals (e.g., NaI(Tl))
 - Emit photons in response to charged particles
@@ -97,8 +100,6 @@ Scintillators are materials that emit light (photons) when they are excited by i
 
 SiPMs are highly sensitive light detectors used to detect the small flashes of light produced by scintillators. They are compact, solid-state devices with excellent timing resolution.
 
-![SiPM](images/fit_esponenziale_1500bins.png)
-*Image: Silicon Photomultiplier device*
 
 - Operate in Geiger mode to detect single photons
 - Used for timing and energy measurements
