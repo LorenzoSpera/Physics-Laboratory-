@@ -4,39 +4,87 @@ This repository contains resources and documentation for a physics experiment ai
 
 ---
 
-## 🕒 Muon Lifetime
+# Muon Lifetime Measurement Laboratory
 
-## 🕒 Muon Lifetime
+## Abstract
+This laboratory aims to estimate the mean lifetime of the muon (τμ) via its dominant decay channel:
 
-Muon lifetime measurement is a fundamental experiment in particle physics used to test the weak interaction and relativistic effects. Muons are elementary particles similar to electrons but with a mass about 207 times greater. They are unstable and decay primarily via:
-`μ⁻ → e⁻ + νₑ + ν_μ`
+**μ⁻ → e⁻ + ν̅ₑ + νμ**
 
-The mean lifetime of a muon at rest is approximately **2.2 μs**, but due to relativistic time dilation, many survive long enough to reach the Earth's surface from the upper atmosphere.
+The experimental setup uses plastic scintillators, photomultiplier tubes (PMTs), and NIM/VME electronics to detect cosmic muons and measure their decay times.
 
-In this experiment:
-- A detection system composed of **three planes of plastic scintillators** was used.
-- Cosmic muons pass through the first two planes and are **stopped in an iron slab** between the second and third planes.
-- Once stopped, the muons decay into an electron and two neutrinos. The time between arrival and decay is measured.
-- Signals from the scintillators were processed using **NIM and VME electronics** and digitized with a **Flash ADC** operating at 250 MS/s.
+---
 
-Data analysis involved extracting the time intervals between muon arrival and decay. These were used to build a decay time distribution and fitted with an exponential curve, yielding the measured lifetime:
+## Objectives
+- Measure the muon lifetime (τμ) using cosmic ray muons.
+- Validate the exponential decay law and relativistic time dilation.
+- Compare experimental results with the PDG reference value.
 
+---
 
-This result is consistent with the standard value reported by the Particle Data Group (PDG), confirming the accuracy of the method.
+## Experimental Setup
+- **Scintillators**: 12 plastic scintillators arranged in 3 planes (A, B, C).
+- **Iron Absorber**: Stops incoming muons between B and C planes.
+- **Detectors**: PMTs coupled to scintillators.
+- **Electronics**: NIM & VME crates, logic units, discriminators, dual timers, delay modules.
+- **DAQ**: Flash ADC (CAEN v1720), CAENScope software, data analyzed with ROOT.
 
-![Muon Decay](images/immagine.png)
-*Image: Muon decay process (μ⁻ → e⁻ + ν̅ₑ + ν_μ)*
+---
 
-- Typical lifetime: ~2.2 microseconds at rest
-- Due to time dilation, muons traveling near the speed of light can reach the Earth's surface
+## Procedure Summary
 
+### 1. Scintillator Efficiency
+- Triple coincidence method used to estimate B1 efficiency:
+
+** εB = NABC / NAC**
+- Measurements performed across 25 voltage settings.
+- Fitted with an error function (Gaussian approximation).
+- Optimal voltage range for B1: **1500V–1800V**, with εB ≈ 0.8.
+
+### 2. Coincidence Logic & Trigger
+- **START**: A ∩ B ∩ ¬C — muon enters and stops in the iron.
+- **STOP1**: A ∩ B ∩ G — decay particle exits upward.
+- **STOP2**: C ∩ G — decay particle exits downward.
+- **Trigger**: OR(STOP1, STOP2), with backward readout enabled.
+- **Gate Width**: 10 µs, delayed by 85.5 ns to prevent false triggers.
+
+### 3. Data Acquisition
+- Flash ADC samples at 250 MSa/s (4 ns resolution), 12-bit precision.
+- Signals converted to digital and stored (8192 samples per event).
+- Analysis identifies START/STOP signals and computes time differences.
+
+### 4. Data Analysis
+- Events analyzed using ROOT framework.
+- Lifetime calculated as time between START and STOP signals.
+- Histogram fitted with:
+** N(t) = p₀ · exp(−t/p₁) + p₂**
+
+- Extracted lifetime:
+**  τμ = 2113 ± 58 (stat) ± 26 (syst) ns** 
+
+---
+
+## Conclusion
+- The measured value is consistent with the PDG reference value (~2197 ns).
+- STOP1 gives more reliable results due to dual-plane coincidence.
+- STOP2 affected by background noise and geometric uncertainty.
+- Confirms the expected exponential decay law and relativistic effects in cosmic muons.
+
+---
+
+## References
+1. Particle Data Group, *Review of Particle Physics*, Phys. Rev. D 110, 030001 (2024).  
+2. CAEN – Modular Pulse Processing Electronics: https://www.caen.it  
+3. W.R. Leo, *Techniques for Nuclear and Particle Physics Experiments*, Springer (1994).  
+4. Agilent U1241B Voltmeter Specifications  
+5. G. D'Agostini, *Bayesian Reasoning in Data Analysis*, World Scientific (2003)
 ---
 
 ## 💡 Scintillators
 
 Scintillators are materials that emit light (photons) when they are excited by ionizing radiation, such as when a muon passes through them. These materials are essential in detecting the passage of muons in our setup.
 
-![Scintillator Material](images/immagine.png)
+![Scintillator Material](images/fit_esponenziale_1500bins.png)
 *Image: Example of a plastic scintillator slab*
 
 - Common materials: plastic or inorganic crystals (e.g., NaI(Tl))
@@ -49,7 +97,7 @@ Scintillators are materials that emit light (photons) when they are excited by i
 
 SiPMs are highly sensitive light detectors used to detect the small flashes of light produced by scintillators. They are compact, solid-state devices with excellent timing resolution.
 
-![SiPM](images/immagine.png)
+![SiPM](images/fit_esponenziale_1500bins.png)
 *Image: Silicon Photomultiplier device*
 
 - Operate in Geiger mode to detect single photons
