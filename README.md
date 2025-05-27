@@ -67,7 +67,7 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 </p>
 
 <p align="center">
-<img src="images/istogramma_tempi_stop2.png" alt="Istogramma stop2" width="600"/><br/> <em>Figura 2: Istogramma dei tempi di stop</em> 
+<img src="images/istogramma_tempi_stop2.png" alt="Istogramma stop2" width="600"/><br/> <em>Figura 2: Istogramma dei tempi di stop 2</em> 
 </p>
 
 ---
