@@ -67,6 +67,10 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 <img src="images/fit_esponenziale_1500bins.png" alt="Exponential Fit" width="600"/>
 </p>
 
+<p align="center">
+<img src="images/istogramma_tempi_stop2.png" alt="Istogramma stop2" width="600"/>
+</p>
+
 ---
 
 ## 🧾 Conclusion
