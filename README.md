@@ -63,7 +63,7 @@ The experimental setup uses plastic scintillators, photomultiplier tubes (PMTs),
 **  τμ = 2113 ± 58 (stat) ± 26 (syst) ns** 
 
 ![Exponential fit](images/fit_esponenziale_1500bins.png)
-*Exponential fit of data to calculate the muon lifetime. * 
+
 
 ---
 
