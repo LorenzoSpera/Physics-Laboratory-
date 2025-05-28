@@ -62,6 +62,7 @@ Here follows a schematic representation of the three planes of scintillators:
 ### 4. 📈 Data Analysis
 - Use of **ROOT** to extract START and STOP timestamps.
 - Histogram of decay times fitted with:
+** N(t) = p0 · exp(−t / p1) + p2 ** 
 
 where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 
