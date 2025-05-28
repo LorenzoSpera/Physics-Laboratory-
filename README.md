@@ -32,6 +32,11 @@ The setup uses cosmic ray muons, detected and analyzed via **plastic scintillato
 | **Electronics**   | NIM & VME crates, logic units, discriminators, dual timers, delay modules.  |
 | **DAQ System**    | Flash ADC (CAEN v1720) + CAENScope software, data processed in ROOT.        |
 
+Here follows a schematic representation of the three planes of scintillators: 
+<p align="center">
+<img src="images/schema_scintillatori.png" alt="Schematic representations of the three planes of scintillators" width="600"/><br/> <em>Figure 1: Schematic representations of the three planes of scintillators</em>
+</p>
+
 ---
 
 ## 🔬 Procedure Overview
@@ -63,11 +68,11 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 - ✅ **Extracted Lifetime**:
 
 <p align="center">
-<img src="images/fit_esponenziale_1500bins.png" alt="Exponential Fit" width="600"/><br/> <em>Figura 1: Fit esponenziale dei tempi di vita</em>
+<img src="images/fit_esponenziale_1500bins.png" alt="Exponential Fit" width="600"/><br/> <em>Figure 2: Exponential fit to calculate the lifetime.</em>
 </p>
 
 <p align="center">
-<img src="images/istogramma_tempi_stop2.png" alt="Istogramma stop2" width="600"/><br/> <em>Figura 2: Istogramma dei tempi di stop 2</em> 
+<img src="images/istogramma_tempi_stop2.png" alt="Istogramma stop2" width="600"/><br/> <em>Figure 3: Histograms of decay times using STOP2.</em> 
 </p>
 
 ---
