@@ -93,16 +93,49 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 > 📁 *For plots, raw data, and scripts, see the [`/data`](./data) and [`/scripts`](./scripts) directories.*
 
 
-## 💡 Scintillators
+## 💡 Characterization of Inorganic Scintillators: LYSO and PWO
 
 Scintillators are materials that emit light (photons) when they are excited by ionizing radiation, such as when a muon passes through them. These materials are essential in detecting the passage of muons in our setup.
 
 
+## Overview
 
+This project investigates two inorganic scintillator crystals — LYSO (Lutetium Yttrium Orthosilicate) and PWO (Lead Tungstate) — to characterize their performance as radiation detectors. The key parameters studied are **light output (LO)** and **decay time (τ)** under different conditions, including internal radioactivity and cosmic ray interactions.
 
-- Common materials: plastic or inorganic crystals (e.g., NaI(Tl))
-- Emit photons in response to charged particles
-- Coupled to light sensors (e.g., SiPMs) for readout
+## Experimental Setup
+
+- **Photomultiplier Tubes (PMTs)** were used to detect light from scintillation events and convert them into measurable electric signals.
+- Custom electronics and software (based on ROOT and oscilloscopic acquisition) were employed to analyze the digitized signal waveforms.
+- A gain calibration of the PMT was performed using low-intensity LED signals to isolate single photoelectron responses.
+- A signal attenuator was included for high-amplitude events.
+
+## Scintillators Tested
+
+- **LYSO**:
+  - Exhibits intrinsic radioactivity due to the isotope ¹⁷⁶Lu.
+  - Both internal decay events and cosmic ray interactions were analyzed.
+- **PWO**:
+  - No intrinsic radioactivity; only cosmic ray interactions studied.
+
+## Key Results
+
+| Scintillator | Source            | Decay Time (τ) [ns] | Light Output (LO) [MeV⁻¹] |
+|--------------|-------------------|----------------------|----------------------------|
+| LYSO         | Internal decay    | 46.15 ± 0.01         | 779 ± 8                    |
+| LYSO         | Cosmic muons      | 47.39 ± 0.02         | 680 ± 10                   |
+| PWO          | Cosmic muons      | 20.93 ± 0.003        | 5.65 ± 0.06                |
+
+## Observations
+
+- LYSO has a significantly higher light output than PWO, making it ideal for high-resolution calorimetric applications.
+- The decay time of LYSO is longer, which can be a limitation for fast-timing experiments.
+- Minor discrepancies between measurements for LYSO under different conditions are attributed to slight variations in optical coupling with the PMT.
+
+## References
+
+- [Particle Data Group, 2024](https://doi.org/10.1103/PhysRevD.110.030001)  
+- [Luxium Solutions: LYSO Material Data](https://www.luxiumsolutions.com/radiation-detection-scintillators/crystal-scintillators/lyso-scintillation-crystals)  
+- [EJNMMI Physics on LYSO Radioactivity](https://doi.org/10.1186/s40658-020-00291-1)
 
 ---
 
