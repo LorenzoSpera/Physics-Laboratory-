@@ -95,7 +95,7 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 
 ---
 
-> 📁 *For plots, raw data, and scripts, see the [`/data`](./data) and [`/scripts`](./scripts) directories.*
+> 📁 *For plots, raw data, and scripts, see the [`/data`](./data) and [`/scripts`](./Scripts) directories.*
 
 
 ## 💡 Scintillators
