@@ -99,7 +99,7 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 > 📁 *For plots, raw data, and scripts, see the [`/data`](./data) and [`/scripts`](./Scripts) directories.*
 
 
-## 💡 Characterization of Inorganic Scintillators: LYSO and PWO
+# 💡 Characterization of Inorganic Scintillators: LYSO and PWO
 
 Scintillators are materials that emit light (photons) when they are excited by ionizing radiation, such as when a muon passes through them. These materials are essential in detecting the passage of muons in our setup.
 
