@@ -145,22 +145,107 @@ This project investigates two inorganic scintillator crystals — LYSO (Lutetium
 
 ---
 
-## 📷 Silicon Photomultipliers (SiPM)
+# 🔬 SiPM Characterization with LED Driver
 
-SiPMs are highly sensitive light detectors used to detect the small flashes of light produced by scintillators. They are compact, solid-state devices with excellent timing resolution.
+## 📖 Introduction
 
+This project performs a full characterization of a **Silicon Photomultiplier (SiPM)** using a controlled pulsed light source from a **CAEN SP5601 LED Driver**. The analysis focuses on two key properties of the SiPM:
 
-- Operate in Geiger mode to detect single photons
-- Used for timing and energy measurements
-- Ideal for portable or compact detector systems
+- The **gain (G)** — i.e., the amplification factor relating detected photons to electric charge
+- The **dark count rate (f)** — spontaneous noise events occurring in the absence of light
+
+The SiPM response is analyzed using ROOT, based on digitized signals from a CAEN DT5720A ADC module.
 
 ---
 
-## 📁 Contents
+## 📘 Scientific Background
 
-- `/src`: source code for data acquisition and analysis
-- `/docs`: detailed documentation and references
-- `/images`: high-resolution versions of figures and experimental setup
+### What is a SiPM?
+
+A **Silicon Photomultiplier (SiPM)** is a solid-state photon detector made of thousands of microcells operating in **Geiger mode**. Each cell is a reverse-biased p–n junction that, when struck by a photon, triggers a self-sustained avalanche of charge carriers.
+
+Key characteristics:
+- High photon detection efficiency (PDE)
+- Sub-nanosecond timing resolution
+- Operates at low voltage (30–60 V)
+- Gain ~10⁵–10⁶
+- Immune to magnetic fields
+
+---
+
+## 📊 Experiment Goals
+
+1. **Measure the SiPM Gain** as a function of the applied bias voltage.
+2. **Determine the Dark Count Rate (DCR)** for various acquisition times and voltages.
+3. **Develop and validate analysis methods** using baseline correction and signal integration.
+4. **Visualize photoelectron peaks** and their statistics through ROOT.
+
+---
+
+## ⚙️ Experimental Setup
+
+The system includes:
+
+- **SiPM Detector (SP5650C)**: connected to an optical fiber receiving LED pulses.
+- **LED Driver (CAEN SP5601)**: emits controlled light pulses at 400 nm with 8 ns pulse width.
+- **Amplifier & Power Supply (CAEN SP5600)**: provides bias voltage and amplification.
+- **Digitizer (CAEN DT5720A)**: samples incoming analog waveforms at 250 MSa/s.
+- **ROOT**: processes waveform data to extract charge and perform statistical analysis.
+
+Here follows a schematic representation of the experimental setup:
+
+<p align="center">
+<img src="images/SiPM_Experimental_SetUP.png" alt="Exponential Fit" width="600"/><br/> <em>Figure : Schematic representation of the experimental setup.</em>
+</p> 
+
+
+---
+
+## 📐 Theory
+
+### 1. Signal Integration — Charge \( Q \)
+
+The SiPM output signal is digitized into an array of voltage samples. The total charge \( Q \) deposited in one event is:
+
+Q = ∑[i_min, i_max] (V[i] × Δt) / R
+
+
+- `V[i]`: signal voltage at time index `i` (in mV)
+- `Δt = 4 ns`: sampling interval
+- `R = 50 Ω`: input impedance
+- Output unit: picocoulombs (pC)
+
+<p align="center">
+<img src="images/fit_gaussiani.png" alt="Exponential Fit" width="600"/><br/> <em>Figure : Histogram containing the values of the charge calculated for a bias voltage of 55.11V with gaussian fits for every peak.</em>
+</p> 
+
+### 2. Gain Calculation — \( G \)
+
+To find the gain, we analyze the photoelectron spectrum (discrete charge peaks). Gain is derived from the slope of charge vs. number of cells fired:
+
+G = (m / qₑ) × 10^(A / 20)
+
+
+- `m`: slope of charge vs. number of photoelectrons
+- `qₑ = 1.602 × 10⁻¹⁹ C`: elementary charge
+- `A`: amplifier attenuation in decibels (e.g., 32 dB)
+
+<p align="center">
+<img src="images/guadagno_voltaggio.png" alt="Exponential Fit" width="600"/><br/> <em>Figure: Gain vs bias voltage.</em>
+</p> 
+
+### 3. Dark Count Rate — \( f \)
+
+Measured as the frequency of noise events in absence of light:
+
+f = λ / T
+
+- `λ`: mean value from a Poisson fit to count histogram
+- `T`: acquisition window duration (e.g., 16k samples × 4 ns)
+
+<p align="center">
+<img src="images/frequenza_voltaggio.png" alt="Exponential Fit" width="600"/><br/> <em>Figure: Dark count frequency vs voltage.</em>
+</p> 
 
 ---
 
