@@ -189,7 +189,7 @@ A[dB] = 20 × log₁₀(V_noAtt / V_att)
 ### Charge spectrum for LYSO and PWO 
 
 <p align="center">
-<img src="images/spettro_lyso_rad_interna.png alt="Exponential Fit" width="600"/><br/> <em>Figure : Internal decay charge spectrum fto lyso. </em>
+<img src="images/spettro_lyso_rad_interna.png " alt="Exponential Fit" width="600"/><br/> <em>Figure : Internal decay charge spectrum fto lyso. </em>
 </p>
 
 <p align="center">
