@@ -1,9 +1,3 @@
-# Muon Detection Experiment
-
-This repository contains resources and documentation for a physics experiment aimed at detecting cosmic muons and measuring their lifetime using scintillators and Silicon Photomultipliers (SiPMs).
-
----
-
 # 🧪 Muon Lifetime Measurement Laboratory
 
 ## 📌 Abstract
