@@ -99,49 +99,155 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 > 📁 *For plots, raw data, and scripts, see the [`/data`](./data) and [`/scripts`](./Scripts) directories.*
 
 
-# 💡 Characterization of Inorganic Scintillators: LYSO and PWO
+# 🌟 Inorganic Scintillator Characterization: LYSO and PWO
 
-Scintillators are materials that emit light (photons) when they are excited by ionizing radiation, such as when a muon passes through them. These materials are essential in detecting the passage of muons in our setup.
+## 📋 Abstract
+
+This project characterizes two inorganic scintillator crystals, **LYSO** and **PWO**, focusing on their performance under internal radioactivity and cosmic muon excitation. The analysis evaluates key parameters such as:
+
+- **Light Output (LO)**: the number of photoelectrons per MeV of deposited energy
+- **Decay Time (τ)**: time constant of scintillation light emission
+
+Measurements are performed using a photomultiplier tube (PMT) coupled to each crystal, with signal acquisition handled by a flash ADC and data analyzed using ROOT.
+
+---
+
+## 🧪 Motivation
+
+Inorganic scintillators are widely used in high-energy physics, medical imaging, and nuclear detection due to their excellent energy resolution and high density. Understanding their **light production efficiency** and **timing response** is critical for system optimization.
+
+---
+
+## ⚙️ Experimental Setup
+
+- **Photomultiplier Tube (PMT)**: Converts scintillation light into electrical signals
+- **Crystals**:
+  - **LYSO (Lu₂(1−x)Y₂xSiO₅)**: High density, internal radioactivity from ¹⁷⁶Lu decay
+  - **PWO (PbWO₄)**: No intrinsic radioactivity, fast decay time
+- **Signal Processing**:
+  - Flash ADC (250 MSa/s, 12-bit resolution)
+  - Data stored as waveforms (1024 samples per event)
+
+Signal amplification, attenuation, and synchronization are controlled via CAEN electronics (N147, N472, etc.).
+
+---
+
+## 📐 Theoretical Framework
+
+### ✅ Charge Calculation
+
+The charge \( Q \) collected by the PMT is calculated by:
+
+Q = ∑[i_min, i_max] (V[i] × Δt) / R
 
 
-## Overview
+- \( V[i] \): signal amplitude in mV
+- \( Δt = 4\,ns \)
+- \( R = 50\,Ω \)
+- Result: \( Q \) in picoCoulombs (pC)
 
-This project investigates two inorganic scintillator crystals — LYSO (Lutetium Yttrium Orthosilicate) and PWO (Lead Tungstate) — to characterize their performance as radiation detectors. The key parameters studied are **light output (LO)** and **decay time (τ)** under different conditions, including internal radioactivity and cosmic ray interactions.
+<p align="center">
+<img src="images/carica_multi_gauss.png" alt="Exponential Fit" width="600"/><br/> <em>Figure : Multigaussian fit for charge spectrum.</em>
+</p>
 
-## Experimental Setup
 
-- **Photomultiplier Tubes (PMTs)** were used to detect light from scintillation events and convert them into measurable electric signals.
-- Custom electronics and software (based on ROOT and oscilloscopic acquisition) were employed to analyze the digitized signal waveforms.
-- A gain calibration of the PMT was performed using low-intensity LED signals to isolate single photoelectron responses.
-- A signal attenuator was included for high-amplitude events.
+<p align="center">
+<img src="images/carica_multi_gauss_log.png" alt="Exponential Fit" width="600"/><br/> <em>Figure : Multigaussian fit for charge spectrum in log scale.</em>
+</p>
 
-## Scintillators Tested
 
-- **LYSO**:
-  - Exhibits intrinsic radioactivity due to the isotope ¹⁷⁶Lu.
-  - Both internal decay events and cosmic ray interactions were analyzed.
-- **PWO**:
-  - No intrinsic radioactivity; only cosmic ray interactions studied.
 
-## Key Results
+### ✅ PMT Gain
 
-| Scintillator | Source            | Decay Time (τ) [ns] | Light Output (LO) [MeV⁻¹] |
-|--------------|-------------------|----------------------|----------------------------|
-| LYSO         | Internal decay    | 46.15 ± 0.01         | 779 ± 8                    |
-| LYSO         | Cosmic muons      | 47.39 ± 0.02         | 680 ± 10                   |
-| PWO          | Cosmic muons      | 20.93 ± 0.003        | 5.65 ± 0.06                |
+The gain \( G \) is calculated from LED calibration data as:
 
-## Observations
+G = (μ₀ + μ₁) / e
 
-- LYSO has a significantly higher light output than PWO, making it ideal for high-resolution calorimetric applications.
-- The decay time of LYSO is longer, which can be a limitation for fast-timing experiments.
-- Minor discrepancies between measurements for LYSO under different conditions are attributed to slight variations in optical coupling with the PMT.
 
-## References
+Where:
+- \( μ₀ \): baseline offset
+- \( μ₁ \): mean charge from one photoelectron
+- \( e \): electron charge
 
-- [Particle Data Group, 2024](https://doi.org/10.1103/PhysRevD.110.030001)  
-- [Luxium Solutions: LYSO Material Data](https://www.luxiumsolutions.com/radiation-detection-scintillators/crystal-scintillators/lyso-scintillation-crystals)  
-- [EJNMMI Physics on LYSO Radioactivity](https://doi.org/10.1186/s40658-020-00291-1)
+### ✅ Light Output
+
+From:
+LO = Q / (e × G × E)
+
+
+Where:
+- \( Q \): measured charge
+- \( G \): PMT gain
+- \( E \): energy deposited
+
+### ✅ Attenuation Factor
+
+From square wave calibration:
+
+A[dB] = 20 × log₁₀(V_noAtt / V_att)
+
+### Charge spectrum for LYSO and PWO 
+
+<p align="center">
+<img src="images/spettro_lyso_rad_interna.png alt="Exponential Fit" width="600"/><br/> <em>Figure : Internal decay charge spectrum fto lyso. </em>
+</p>
+
+<p align="center">
+<img src="images/spettro_lysp_cosmici.png" alt="Exponential Fit" width="600"/><br/> <em>Figure : Muon charge spectrum for LYSO.</em>
+</p>
+
+<p align="center">
+<img src="images/spetrro_cosmici_pwo.png" alt="Exponential Fit" width="600"/><br/> <em>Figure : Muon charge spectrum for PWO</em>
+</p>
+
+
+### ✅ Decay Time
+
+Scintillation decay modeled as:
+
+N(t) = N₀ · exp(−t / τ)
+
+
+Fitted per event or from averaged pulses.
+
+---
+
+## 📊 Results
+
+| Parameter                | LYSO (internal) | LYSO (cosmics) | PWO (cosmics) |
+|-------------------------|----------------|----------------|----------------|
+| **Decay Time (τ)**      | 46.15 ± 0.01 ns | 47.39 ± 0.02 ns | 20.93 ± 0.003 ns |
+| **Light Output (LO)**   | 779 ± 8 MeV⁻¹   | 680 ± 10 MeV⁻¹ | 5.65 ± 0.06 MeV⁻¹ |
+
+- LYSO shows measurable internal radioactivity due to ¹⁷⁶Lu decay.
+- PWO has faster decay and lower LO, suitable for high-rate applications.
+- Decay times are consistent across sources, confirming intrinsic timing properties.
+
+## 📚 References
+
+1. Particle Data Group, *Review of Particle Physics*, **Phys. Rev. D 110**, 030001 (2024).  
+   [https://pdg.lbl.gov](https://pdg.lbl.gov)
+
+2. Luxium Solutions, *LYSO:Ce Scintillation Crystals*, Product Specifications.  
+   [https://www.luxiumsolutions.com/radiation-detection-scintillators/crystal-scintillators/lyso-scintillation-crystals](https://www.luxiumsolutions.com/radiation-detection-scintillators/crystal-scintillators/lyso-scintillation-crystals)
+
+3. Enríquez-Mier y Terán, F., González-Montoro, A., Hernández-Tamames, J.A., *Characterization of LYSO and BGO scintillators for PET systems*, **EJNMMI Physics**, 2020, 7(1):21.  
+   DOI: [10.1186/s40658-020-00291-1](https://doi.org/10.1186/s40658-020-00291-1)
+
+4. W.R. Leo, *Techniques for Nuclear and Particle Physics Experiments*, 2nd Edition, Springer-Verlag (1994).  
+   ISBN: 978-3-540-57639-3
+
+5. CAEN Educational Kit Manuals (SP5600, N1470, N472), [https://www.caen.it](https://www.caen.it)
+
+6. G. D'Agostini, *Bayesian Reasoning in Data Analysis: A Critical Introduction*, World Scientific (2003).  
+   ISBN: 978-9812383562
+
+
+---
+
+
+
+
 
 ---
 
