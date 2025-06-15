@@ -39,7 +39,7 @@ Here follows a schematic representation of the three planes of scintillators:
 - **Method**: Triple-coincidence between A1, B1, C1 to compute B1 efficiency:
 
 - Efficiency curve fitted with an **error function** (Gaussian approximation).
-- Optimal operating range: **1500–1800 V**, with **ε<sub>B</sub> ≈ 0.8**.
+- Optimal operating range: **1750–1900 V**, with **ε<sub>B</sub> ≈ 0.8**.
 
 ### 2. ⚙️ Coincidence Logic & Triggering
 - **START signal**: A ∩ B ∩ ¬C — muon enters and stops in iron.
@@ -63,7 +63,7 @@ where **p₁ ≈ τ<sub>μ</sub>**, and **p₂** accounts for background.
 - ✅ **Extracted Lifetime**:
 
 <p align="center">
-<img src="images/fit_esponenziale_1500bins.png" alt="Exponential Fit" width="600"/><br/> <em>Figure 2: Exponential fit to calculate the lifetime.</em>
+<img src="images/fit_esponenziale_1750bins.png" alt="Exponential Fit" width="600"/><br/> <em>Figure 2: Exponential fit to calculate the lifetime.</em>
 </p>
 
 <p align="center">
